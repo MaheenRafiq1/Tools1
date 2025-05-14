@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to download TikTok videos without watermark. Save TikTok videos in HD quality.">
+    <meta name="keywords" content="TikTok downloader, TikTok video saver, download TikTok videos, TikTok without watermark, TikTok HD download">
+    <meta name="author" content="TikTokDownloaderPro">
+    <meta property="og:title" content="Free TikTok Video Downloader | No Watermark HD Downloads">
+    <meta property="og:description" content="Download TikTok videos without watermark in HD quality.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta name="robots" content="index, follow">
+    <title>TikTok Video Downloader | Save Videos Without Watermark</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TikTok Video Downloader",
+      "description": "Free online tool to download TikTok videos without watermark",
+      "url": "https://yourwebsite.com",
+      "applicationCategory": "VideoTool"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #FE2C55; /* TikTok red */
+            --secondary: #25F4EE; /* TikTok teal */
+            --dark: #010101;
+            --light: #ffffff;
+            --gray: #f8f8f8;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--light);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        .main {
+            padding: 40px 0;
+        }
+        
+        .tool-card {
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .tool-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .tool-title h1 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .tool-title p {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #d91a40;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: #1bd1cb;
+            transform: translateY(-2px);
+        }
+        
+        .result-container {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+        
+        .video-preview {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-hd {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-sd {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-no-watermark {
+            background: #25D366;
+            color: white;
+        }
+        
+        .btn-audio {
+            background: #7289DA;
+            color: white;
+        }
+        
+        .ad-container {
+            background: #f1f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .how-to-use {
+            margin-top: 40px;
+        }
+        
+        .how-to-use h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i>🎵</i>
+                <span>TikTokDownloader</span>
+            </a>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">How It Works</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container main">
+        <!-- AdSense Top Banner -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        
+        <div class="tool-card">
+            <div class="tool-title">
+                <h1>TikTok Video Downloader</h1>
+                <p>Download TikTok videos without watermark in HD quality</p>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="tiktokUrl" placeholder="Paste TikTok video URL here...">
+                <button id="downloadBtn" class="btn-primary">
+                    <i>🔍</i>
+                    <span>Download</span>
+                </button>
+            </div>
+            
+            <div class="spinner" id="spinner"></div>
+            
+            <div class="result-container" id="resultContainer">
+                <video controls class="video-preview" id="videoPreview"></video>
+                
+                <div class="download-options">
+                    <a href="#" class="download-btn btn-hd" id="hdDownload">
+                        <i>⬇️</i>
+                        <span>HD Download</span>
+                    </a>
+                    <a href="#" class="download-btn btn-sd" id="sdDownload">
+                        <i>⬇️</i>
+                        <span>SD Download</span>
+                    </a>
+                    <a href="#" class="download-btn btn-no-watermark" id="noWatermarkDownload">
+                        <i>💧</i>
+                        <span>No Watermark</span>
+                    </a>
+                    <a href="#" class="download-btn btn-audio" id="audioDownload">
+                        <i>🎵</i>
+                        <span>Audio Only</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AdSense Middle Banner -->
+        <div class="ad-container">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        
+        <div class="how-to-use">
+            <h2>How to Download TikTok Videos</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Copy Link</h3>
+                    <p>Open TikTok app and copy the video link you want to download</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Paste URL</h3>
+                    <p>Paste the TikTok video URL in the input field above</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download</h3>
+                    <p>Click the download button and choose your preferred format</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TikTokDownloader</h3>
+                    <p>The easiest way to download TikTok videos without watermark in HD quality.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">No Watermark</a></li>
+                        <li><a href="#">HD Quality</a></li>
+                        <li><a href="#">Fast Download</a></li>
+                        <li><a href="#">Audio Extraction</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> TikTokDownloader. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Elements
+            const tiktokUrl = document.getElementById('tiktokUrl');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const spinner = document.getElementById('spinner');
+            const resultContainer = document.getElementById('resultContainer');
+            const videoPreview = document.getElementById('videoPreview');
+            const hdDownload = document.getElementById('hdDownload');
+            const sdDownload = document.getElementById('sdDownload');
+            const noWatermarkDownload = document.getElementById('noWatermarkDownload');
+            const audioDownload = document.getElementById('audioDownload');
+            const toast = document.getElementById('toast');
+            
+            // Download button click
+            downloadBtn.addEventListener('click', function() {
+                const url = tiktokUrl.value.trim();
+                
+                if (!url) {
+                    showToast('Please enter a TikTok video URL');
+                    return;
+                }
+                
+                if (!isValidTikTokUrl(url)) {
+                    showToast('Please enter a valid TikTok video URL');
+                    return;
+                }
+                
+                spinner.style.display = 'block';
+                downloadBtn.disabled = true;
+                
+                // Simulate API call (in a real app, this would call your backend)
+                setTimeout(() => {
+                    // This is a simulation - in reality you would:
+                    // 1. Send the URL to your backend
+                    // 2. Backend would fetch the TikTok video
+                    // 3. Return the download links
+                    
+                    const videoId = extractVideoId(url);
+                    if (!videoId) {
+                        showToast('Could not process this TikTok URL');
+                        spinner.style.display = 'none';
+                        downloadBtn.disabled = false;
+                        return;
+                    }
+                    
+                    // Simulate successful response
+                    const videoInfo = {
+                        id: videoId,
+                        hdUrl: `https://example.com/download/${videoId}/hd`,
+                        sdUrl: `https://example.com/download/${videoId}/sd`,
+                        noWatermarkUrl: `https://example.com/download/${videoId}/nowatermark`,
+                        audioUrl: `https://example.com/download/${videoId}/audio`,
+                        previewUrl: `https://example.com/preview/${videoId}`
+                    };
+                    
+                    // Update UI with simulated data
+                    videoPreview.src = videoInfo.previewUrl;
+                    
+                    hdDownload.href = videoInfo.hdUrl;
+                    hdDownload.download = `tiktok_${videoId}_hd.mp4`;
+                    
+                    sdDownload.href = videoInfo.sdUrl;
+                    sdDownload.download = `tiktok_${videoId}_sd.mp4`;
+                    
+                    noWatermarkDownload.href = videoInfo.noWatermarkUrl;
+                    noWatermarkDownload.download = `tiktok_${videoId}_no_watermark.mp4`;
+                    
+                    audioDownload.href = videoInfo.audioUrl;
+                    audioDownload.download = `tiktok_${videoId}_audio.mp3`;
+                    
+                    resultContainer.style.display = 'block';
+                    spinner.style.display = 'none';
+                    downloadBtn.disabled = false;
+                    
+                    // Scroll to results
+                    resultContainer.scrollIntoView({ behavior: 'smooth' });
+                    
+                    showToast('Video ready for download!');
+                }, 1500);
+            });
+            
+            // Helper functions
+            function isValidTikTokUrl(url) {
+                return /https?:\/\/(www\.|vm\.|)tiktok\.com\/.+/i.test(url) || 
+                       /https?:\/\/vt\.tiktok\.com\/.+/i.test(url);
+            }
+            
+            function extractVideoId(url) {
+                // This is a simplified version - real implementation would need more robust parsing
+                const matches = url.match(/\/(video|v)\/(\d+)/);
+                if (matches && matches[2]) {
+                    return matches[2];
+                }
+                
+                // For shortened URLs
+                const shortMatches = url.match(/vt\.tiktok\.com\/(\w+)/);
+                if (shortMatches && shortMatches[1]) {
+                    return shortMatches[1];
+                }
+                
+                return null;
+            }
+            
+            function showToast(message) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+    
+    <!-- Google Analytics (Optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
