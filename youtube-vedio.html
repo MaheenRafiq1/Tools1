@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free YouTube Video Downloader - Download videos in HD, MP4, 3GP and convert to MP3 with different quality options">
+    <meta name="keywords" content="youtube downloader, video downloader, youtube to mp3, youtube to mp4, free video download">
+    <meta name="author" content="YourName">
+    <meta name="robots" content="index, follow">
+    <title>Fast YouTube Video Downloader | HD Quality | Free</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:title" content="Fast YouTube Video Downloader">
+    <meta property="og:description" content="Download YouTube videos in HD quality for free">
+    <meta property="og:image" content="https://yourwebsite.com/images/preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/">
+    <meta property="twitter:title" content="Fast YouTube Video Downloader">
+    <meta property="twitter:description" content="Download YouTube videos in HD quality for free">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YouTube Video Downloader",
+      "url": "https://yourwebsite.com",
+      "description": "Free tool to download YouTube videos in various formats and quality",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #282828;
+            --accent-color: #606060;
+            --light-color: #f9f9f9;
+            --dark-color: #212121;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --error-color: #F44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .ad-banner {
+            background-color: #f1f1f1;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        main {
+            padding: 30px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .downloader-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .input-group input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .input-group button {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .input-group button:hover {
+            background-color: #cc0000;
+        }
+        
+        .options-container {
+            display: none;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .options-container.active {
+            display: block;
+        }
+        
+        .format-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .format-option {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .format-option:hover {
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+        
+        .format-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(255, 0, 0, 0.05);
+        }
+        
+        .format-option h4 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .format-option p {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        .compression-options {
+            margin-bottom: 20px;
+        }
+        
+        .compression-options h3 {
+            margin-bottom: 10px;
+        }
+        
+        .compression-slider {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .compression-levels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        
+        .compression-level {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: var(--accent-color);
+        }
+        
+        .how-to-use {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .how-to-use h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step h3 {
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .input-group input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .input-group button {
+                border-radius: 4px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+        
+        /* Loading animation */
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .loader.active {
+            display: block;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--error-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Responsive ads */
+        .ad-responsive {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .ad-responsive iframe {
+            width: 100%;
+            height: auto;
+            min-height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="YouTube Downloader Logo">
+                <h1>YT Downloader</h1>
+            </div>
+            <div class="mobile-menu">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-banner">
+            <div class="ad-responsive">
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- Ad Unit 1 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <section class="hero">
+            <h2>Download YouTube Videos in HD Quality</h2>
+            <p>Fast, free and easy to use YouTube video downloader. Save videos in MP4, WEBM, 3GP formats or extract audio as MP3.</p>
+        </section>
+        
+        <section class="downloader-container">
+            <div class="input-group">
+                <input type="text" id="video-url" placeholder="Paste YouTube video URL here..." />
+                <button id="fetch-btn">Fetch Video</button>
+            </div>
+            
+            <div class="loader">
+                <div class="spinner"></div>
+                <p>Fetching video information...</p>
+            </div>
+            
+            <div class="options-container" id="options-container">
+                <h3>Select Format & Quality</h3>
+                <div class="format-options" id="format-options">
+                    <!-- Format options will be dynamically inserted here -->
+                </div>
+                
+                <div class="compression-options">
+                    <h3>Compression Level</h3>
+                    <input type="range" min="0" max="100" value="50" class="compression-slider" id="compression-slider">
+                    <div class="compression-levels">
+                        <span class="compression-level">Small File</span>
+                        <span class="compression-level">Balanced</span>
+                        <span class="compression-level">Best Quality</span>
+                    </div>
+                </div>
+                
+                <button class="download-btn" id="download-btn">Download Now</button>
+            </div>
+        </section>
+        
+        <!-- Middle Ad Banner -->
+        <div class="ad-banner">
+            <div class="ad-responsive">
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- Ad Unit 2 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID_2"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <section class="features">
+            <div class="feature-card">
+                <i>🎥</i>
+                <h3>High Quality Downloads</h3>
+                <p>Download videos in up to 4K resolution with our premium quality service.</p>
+            </div>
+            <div class="feature-card">
+                <i>⚡</i>
+                <h3>Fast Processing</h3>
+                <p>Our servers process your downloads quickly so you don't have to wait.</p>
+            </div>
+            <div class="feature-card">
+                <i>🔒</i>
+                <h3>Safe & Secure</h3>
+                <p>No registration required. We don't store your downloads or personal data.</p>
+            </div>
+        </section>
+        
+        <section class="how-to-use">
+            <h2>How To Download YouTube Videos</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Paste URL</h3>
+                    <p>Copy and paste the YouTube video URL into the input field above.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Select Format</h3>
+                    <p>Choose your preferred video format and quality options.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download</h3>
+                    <p>Click the download button and save the video to your device.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="ad-banner">
+            <div class="ad-responsive">
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- Ad Unit 3 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID_3"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>YT Downloader</h3>
+                    <p>The fastest way to download YouTube videos in multiple formats and quality options.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">DMCA</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 YT Downloader. All rights reserved. This tool is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Sample video formats data (in a real app, this would come from your backend)
+        const sampleFormats = [
+            { type: 'video', quality: '4K', format: 'MP4', size: '120MB', code: '137' },
+            { type: 'video', quality: '1080p', format: 'MP4', size: '80MB', code: '137' },
+            { type: 'video', quality: '720p', format: 'MP4', size: '50MB', code: '22' },
+            { type: 'video', quality: '480p', format: 'MP4', size: '30MB', code: '18' },
+            { type: 'video', quality: '360p', format: 'MP4', size: '20MB', code: '18' },
+            { type: 'audio', quality: 'High', format: 'MP3', size: '8MB', code: '140' },
+            { type: 'audio', quality: 'Medium', format: 'MP3', size: '5MB', code: '139' }
+        ];
+        
+        // DOM elements
+        const fetchBtn = document.getElementById('fetch-btn');
+        const videoUrlInput = document.getElementById('video-url');
+        const loader = document.querySelector('.loader');
+        const optionsContainer = document.getElementById('options-container');
+        const formatOptions = document.getElementById('format-options');
+        const downloadBtn = document.getElementById('download-btn');
+        const compressionSlider = document.getElementById('compression-slider');
+        const toast = document.getElementById('toast');
+        
+        // Selected format
+        let selectedFormat = null;
+        
+        // Fetch video info
+        fetchBtn.addEventListener('click', function() {
+            const videoUrl = videoUrlInput.value.trim();
+            
+            if (!videoUrl) {
+                showToast('Please enter a YouTube video URL');
+                return;
+            }
+            
+            // Validate YouTube URL
+            if (!isValidYouTubeUrl(videoUrl)) {
+                showToast('Please enter a valid YouTube URL');
+                return;
+            }
+            
+            // Show loading
+            loader.classList.add('active');
+            optionsContainer.classList.remove('active');
+            
+            // Simulate API call (in a real app, you would call your backend here)
+            setTimeout(() => {
+                loader.classList.remove('active');
+                optionsContainer.classList.add('active');
+                populateFormatOptions(sampleFormats);
+            }, 1500);
+        });
+        
+        // Download button click
+        downloadBtn.addEventListener('click', function() {
+            if (!selectedFormat) {
+                showToast('Please select a format first');
+                return;
+            }
+            
+            const videoUrl = videoUrlInput.value.trim();
+            const compressionLevel = compressionSlider.value;
+            
+            // In a real app, you would send this data to your backend
+            // to process the download with the selected options
+            showToast(`Preparing download: ${selectedFormat.quality} ${selectedFormat.format} (Compression: ${compressionLevel}%)`);
+            
+            // Simulate download preparation
+            setTimeout(() => {
+                // This would be replaced with actual download logic
+                // For demo purposes, we'll just show a message
+                showToast('Download started! If this were a real app, your file would now download.');
+                
+                // In a real implementation, you might do:
+                // window.location.href = `/download?url=${encodeURIComponent(videoUrl)}&format=${selectedFormat.code}&compression=${compressionLevel}`;
+            }, 1000);
+        });
+        
+        // Helper function to validate YouTube URLs
+        function isValidYouTubeUrl(url) {
+            const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+            return pattern.test(url);
+        }
+        
+        // Populate format options
+        function populateFormatOptions(formats) {
+            formatOptions.innerHTML = '';
+            
+            formats.forEach(format => {
+                const formatCard = document.createElement('div');
+                formatCard.className = 'format-option';
+                formatCard.innerHTML = `
+                    <h4>${format.quality} ${format.format}</h4>
+                    <p>${format.size}</p>
+                `;
+                
+                formatCard.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    document.querySelectorAll('.format-option').forEach(option => {
+                        option.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    formatCard.classList.add('selected');
+                    
+                    // Set selected format
+                    selectedFormat = format;
+                });
+                
+                formatOptions.appendChild(formatCard);
+            });
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            toast.textContent = message;
+            
+            // Set color based on type
+            if (type === 'error') {
+                toast.style.backgroundColor = 'var(--error-color)';
+            } else if (type === 'success') {
+                toast.style.backgroundColor = 'var(--success-color)';
+            } else {
+                toast.style.backgroundColor = 'var(--primary-color)';
+            }
+            
+            toast.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Service worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    
+    <!-- Google Analytics (optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
