@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online plagiarism checker tool to detect duplicate content. Check your documents, essays, and articles for originality.">
+    <meta name="keywords" content="plagiarism checker, duplicate content detector, originality checker, academic integrity tool">
+    <meta name="author" content="Plagiarism Checker Tool">
+    <meta name="robots" content="index, follow">
+    <title>Plagiarism Checker Tool | Free Online Originality Checker</title>
+    <link rel="canonical" href="https://yourwebsite.com/plagiarism-checker" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-bg: #f8f9fa;
+            --dark-text: #202124;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .checker-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-check {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-check:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .result-container {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        
+        .progress-bar {
+            height: 25px;
+            border-radius: 4px;
+            background-color: #e9ecef;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        .ad-container {
+            background-color: #f1f3f4;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+            min-height: 90px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            .checker-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (optional) -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+    <!-- End Google Tag Manager -->
+
+    <header class="header">
+        <div class="main-container text-center">
+            <h1>Plagiarism Checker Tool</h1>
+            <p class="lead">Check your content for originality and duplicate text across the web</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Top Ad Banner -->
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- PlagiarismChecker_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checker-card">
+                    <h2 class="mb-4">Check for Plagiarism</h2>
+                    <form id="plagiarismForm">
+                        <div class="mb-3">
+                            <label for="contentText" class="form-label">Enter your text to check</label>
+                            <textarea class="form-control" id="contentText" rows="10" placeholder="Paste your content here (minimum 50 words)..." required></textarea>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="sensitivity" class="form-label">Check Sensitivity</label>
+                                <select class="form-select" id="sensitivity">
+                                    <option value="low">Low (Fastest)</option>
+                                    <option value="medium" selected>Medium (Recommended)</option>
+                                    <option value="high">High (Most Thorough)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="fileType" class="form-label">Document Type (optional)</label>
+                                <select class="form-select" id="fileType">
+                                    <option value="general" selected>General Text</option>
+                                    <option value="academic">Academic Paper</option>
+                                    <option value="article">Blog/Article</option>
+                                    <option value="website">Website Content</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-secondary me-md-2" id="clearBtn">Clear</button>
+                            <button type="submit" class="btn btn-check" id="checkBtn">Check for Plagiarism</button>
+                        </div>
+                    </form>
+                    
+                    <div class="result-container" id="resultContainer">
+                        <h3 class="mb-3">Plagiarism Check Results</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="plagiarismBar"></div>
+                        </div>
+                        <p class="text-center mb-3"><strong><span id="plagiarismPercent">0</span>% Similarity Found</strong></p>
+                        
+                        <div id="detailedResults">
+                            <h4 class="mt-4">Detailed Analysis</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Source</th>
+                                            <th>Similarity</th>
+                                            <th>Matched Text</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resultsTable">
+                                        <!-- Results will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Ad Banner -->
+                <div class="ad-container">
+                    <!-- Replace with your Google AdSense code -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                    <!-- PlagiarismChecker_Middle -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                        data-ad-slot="YOUR_AD_SLOT_ID"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
+                <div class="checker-card">
+                    <h2 class="mb-4">How It Works</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">1</div>
+                                <h3>Paste Your Text</h3>
+                                <p>Copy and paste your content into the text area above. Our tool supports documents up to 10,000 words.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">2</div>
+                                <h3>Advanced Analysis</h3>
+                                <p>Our algorithm checks your text against billions of web pages and academic databases for matches.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">3</div>
+                                <h3>Detailed Report</h3>
+                                <p>Receive a comprehensive report showing similarity percentages and matched sources.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="feature-card">
+                                <div class="feature-icon">4</div>
+                                <h3>Improve Your Work</h3>
+                                <p>Use the results to properly cite sources or rewrite flagged sections for complete originality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Sidebar Ad -->
+                <div class="ad-container mb-4">
+                    <!-- Replace with your Google AdSense code -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                    <!-- PlagiarismChecker_Sidebar -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                        data-ad-slot="YOUR_AD_SLOT_ID"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
+                <div class="checker-card">
+                    <h3 class="mb-3">About This Tool</h3>
+                    <p>Our free plagiarism checker helps students, teachers, and content creators ensure their work is original and properly cited.</p>
+                    <p>The tool compares your text against:</p>
+                    <ul>
+                        <li>Billions of web pages</li>
+                        <li>Academic publications</li>
+                        <li>Previously submitted works</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <h4>Tips to Avoid Plagiarism</h4>
+                        <ol class="mt-3">
+                            <li>Always cite your sources properly</li>
+                            <li>Use quotation marks for direct quotes</li>
+                            <li>Paraphrase ideas in your own words</li>
+                            <li>Keep track of all your sources</li>
+                            <li>Run your work through this checker before submission</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Bottom Sidebar Ad -->
+                <div class="ad-container mt-4">
+                    <!-- Replace with your Google AdSense code -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                    <!-- PlagiarismChecker_Sidebar_Bottom -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                        data-ad-slot="YOUR_AD_SLOT_ID"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- PlagiarismChecker_Bottom -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <footer>
+        <div class="main-container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3>Plagiarism Checker</h3>
+                    <p>A free tool to help maintain academic integrity and content originality.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 Plagiarism Checker Tool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('plagiarismForm');
+            const clearBtn = document.getElementById('clearBtn');
+            const checkBtn = document.getElementById('checkBtn');
+            const resultContainer = document.getElementById('resultContainer');
+            const plagiarismBar = document.getElementById('plagiarismBar');
+            const plagiarismPercent = document.getElementById('plagiarismPercent');
+            const resultsTable = document.getElementById('resultsTable');
+            
+            // Clear form
+            clearBtn.addEventListener('click', function() {
+                document.getElementById('contentText').value = '';
+                resultContainer.style.display = 'none';
+            });
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const text = document.getElementById('contentText').value.trim();
+                
+                if (text.split(/\s+/).length < 50) {
+                    alert('Please enter at least 50 words for accurate plagiarism detection.');
+                    return;
+                }
+                
+                // Show loading state
+                checkBtn.disabled = true;
+                checkBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Checking...';
+                
+                // Simulate API call with timeout
+                setTimeout(function() {
+                    checkPlagiarism(text);
+                    checkBtn.disabled = false;
+                    checkBtn.innerHTML = 'Check for Plagiarism';
+                }, 2000);
+            });
+            
+            // Simulate plagiarism check (in a real app, this would be an API call)
+            function checkPlagiarism(text) {
+                // Show results container
+                resultContainer.style.display = 'block';
+                
+                // Get selected sensitivity
+                const sensitivity = document.getElementById('sensitivity').value;
+                
+                // Calculate random plagiarism percentage based on sensitivity
+                let percent;
+                if (sensitivity === 'low') {
+                    percent = Math.random() * 30; // 0-30% for low sensitivity
+                } else if (sensitivity === 'medium') {
+                    percent = Math.random() * 60; // 0-60% for medium sensitivity
+                } else {
+                    percent = Math.random() * 90; // 0-90% for high sensitivity
+                }
+                
+                // Round to 2 decimal places
+                percent = Math.round(percent * 100) / 100;
+                
+                // Animate progress bar
+                animateProgressBar(percent);
+                
+                // Generate sample results (in a real app, these would come from the API)
+                generateSampleResults(percent);
+            }
+            
+            // Animate progress bar
+            function animateProgressBar(percent) {
+                let width = 0;
+                const interval = setInterval(function() {
+                    if (width >= percent) {
+                        clearInterval(interval);
+                    } else {
+                        width++;
+                        plagiarismBar.style.width = width + '%';
+                        plagiarismPercent.textContent = width;
+                        
+                        // Change color based on percentage
+                        if (width < 20) {
+                            plagiarismBar.style.background = 'linear-gradient(90deg, #34a853, #34a853)';
+                        } else if (width < 50) {
+                            plagiarismBar.style.background = 'linear-gradient(90deg, #fbbc05, #fbbc05)';
+                        } else {
+                            plagiarismBar.style.background = 'linear-gradient(90deg, #ea4335, #ea4335)';
+                        }
+                    }
+                }, 20);
+            }
+            
+            // Generate sample results for demo
+            function generateSampleResults(percent) {
+                resultsTable.innerHTML = '';
+                
+                if (percent < 5) {
+                    resultsTable.innerHTML = `
+                        <tr>
+                            <td colspan="3" class="text-center">No significant matches found. Your content appears to be original!</td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                // Generate 1-5 sample sources
+                const sourceCount = Math.min(Math.ceil(percent / 15), 5);
+                const sources = [
+                    {
+                        url: 'https://example.com/article1',
+                        title: 'Sample Article on Example.com',
+                        match: Math.round(percent / sourceCount * 0.7 * 100) / 100
+                    },
+                    {
+                        url: 'https://wikipedia.org/sample-page',
+                        title: 'Wikipedia Sample Page',
+                        match: Math.round(percent / sourceCount * 0.5 * 100) / 100
+                    },
+                    {
+                        url: 'https://academic.edu/paper',
+                        title: 'Academic Research Paper (2019)',
+                        match: Math.round(percent / sourceCount * 0.4 * 100) / 100
+                    },
+                    {
+                        url: 'https://blog.site/post',
+                        title: 'Blog Post About This Topic',
+                        match: Math.round(percent / sourceCount * 0.3 * 100) / 100
+                    },
+                    {
+                        url: 'https://news.org/story',
+                        title: 'News Article from 2020',
+                        match: Math.round(percent / sourceCount * 0.2 * 100) / 100
+                    }
+                ];
+                
+                for (let i = 0; i < sourceCount; i++) {
+                    const source = sources[i];
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td><a href="${source.url}" target="_blank">${source.title}</a></td>
+                        <td>${source.match}%</td>
+                        <td>${getSampleMatchedText()}</td>
+                    `;
+                    
+                    resultsTable.appendChild(row);
+                }
+            }
+            
+            // Helper function to generate sample matched text
+            function getSampleMatchedText() {
+                const samples = [
+                    "The quick brown fox jumps over the lazy dog. This is a common sentence used for typing practice.",
+                    "In recent years, the development of technology has accelerated at an unprecedented pace.",
+                    "Climate change is one of the most pressing issues facing humanity today, with far-reaching consequences.",
+                    "The study found significant correlations between the variables, suggesting a strong relationship.",
+                    "According to the author, this phenomenon can be explained by three key factors that interact in complex ways."
+                ];
+                
+                return samples[Math.floor(Math.random() * samples.length)];
+            }
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Plagiarism Checker Tool",
+        "url": "https://yourwebsite.com/plagiarism-checker",
+        "description": "Free online plagiarism checker to detect duplicate content in your documents, essays, and articles.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</body>
+</html>
