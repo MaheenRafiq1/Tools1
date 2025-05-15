@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to convert audio files to text transcripts instantly. Supports MP3, WAV, and other audio formats with adjustable accuracy levels.">
+    <meta name="keywords" content="audio to text, speech to text, transcription tool, convert audio to text, free transcription">
+    <meta name="author" content="Audio to Text Converter">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Audio to Text Converter - Instant Online Transcription">
+    <meta property="og:description" content="Convert your audio files to text transcripts in seconds with our free online tool. No registration required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/audio-to-text">
+    <meta property="og:image" content="https://yourwebsite.com/images/audio-to-text-preview.jpg">
+    <link rel="canonical" href="https://yourwebsite.com/audio-to-text">
+    
+    <title>Free Audio to Text Converter | Instant Online Transcription</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #5e35b1;
+            --secondary-color: #f8f9fa;
+            --accent-color: #43a047;
+            --text-color: #333;
+            --light-text: #777;
+            --border-color: #ddd;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f3ff;
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 150px);
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .ad-banner {
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem auto;
+            text-align: center;
+            box-shadow: var(--shadow);
+            max-width: 728px;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-header p {
+            color: var(--light-text);
+        }
+        
+        .tool-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .upload-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(94, 53, 177, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-area p {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #4a2d9c;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: #388e3c;
+        }
+        
+        .settings-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .settings-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+        }
+        
+        .form-group select, 
+        .form-group input[type="range"] {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group select:focus, 
+        .form-group input[type="range"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .result-section {
+            width: 100%;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .result-header h3 {
+            font-size: 1.3rem;
+        }
+        
+        .result-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .transcript-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .transcript {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            background-color: var(--secondary-color);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .loading-spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .ad-sidebar {
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        footer {
+            background-color: white;
+            padding: 2rem 0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            text-decoration: none;
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-content {
+                flex-direction: column;
+            }
+            
+            .result-content {
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>Audio2Text</span>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/examples">Examples</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Convert Audio to Text in Seconds</h1>
+                <p>Upload your audio file and our AI will automatically transcribe it to text. No manual typing needed. 100% free!</p>
+            </section>
+            
+            <!-- Top Ad Banner -->
+            <div class="ad-banner">
+                <!-- Replace with your Google AdSense ad unit -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- Audio2Text_TopBanner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h2>Audio to Text Converter</h2>
+                    <p>Upload your audio file and get instant transcription</p>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="upload-section">
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Upload Your Audio File</h3>
+                            <p>Drag & drop your audio here or click to browse</p>
+                            <p class="small">Supports: MP3, WAV, OGG, M4A (Max 25MB)</p>
+                            <button class="btn">Select Audio File</button>
+                            <input type="file" id="fileInput" accept="audio/*" style="display: none;">
+                        </div>
+                        
+                        <audio controls class="audio-player" id="audioPlayer"></audio>
+                        
+                        <div class="loading" id="loadingIndicator">
+                            <div class="loading-spinner"></div>
+                            <p>Processing your audio...</p>
+                            <p id="processingStatus">Preparing for transcription</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <div class="ad-sidebar">
+                            <!-- Sidebar Ad -->
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                            <!-- Audio2Text_Sidebar -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                                 data-ad-slot="YOUR_AD_SLOT_ID"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        
+                        <form class="settings-form" id="settingsForm">
+                            <div class="form-group">
+                                <label for="accuracyLevel">Transcription Accuracy</label>
+                                <div class="range-container">
+                                    <input type="range" id="accuracyLevel" min="1" max="3" value="2" step="1">
+                                    <span class="range-value" id="accuracyValue">Medium</span>
+                                </div>
+                                <small>Higher accuracy takes longer to process</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="language">Audio Language</label>
+                                <select id="language">
+                                    <option value="en-US" selected>English (US)</option>
+                                    <option value="en-GB">English (UK)</option>
+                                    <option value="es-ES">Spanish</option>
+                                    <option value="fr-FR">French</option>
+                                    <option value="de-DE">German</option>
+                                    <option value="it-IT">Italian</option>
+                                    <option value="pt-BR">Portuguese</option>
+                                    <option value="ru-RU">Russian</option>
+                                    <option value="zh-CN">Chinese</option>
+                                    <option value="ja-JP">Japanese</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="outputFormat">Output Format</label>
+                                <select id="outputFormat">
+                                    <option value="txt">Plain Text (.txt)</option>
+                                    <option value="docx">Word Document (.docx)</option>
+                                    <option value="pdf">PDF (.pdf)</option>
+                                    <option value="srt">Subtitle File (.srt)</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="btn btn-accent" id="processBtn" disabled>
+                                <i class="fas fa-microphone-alt"></i> Convert to Text
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="result-section" id="resultSection">
+                    <div class="result-header">
+                        <h3>Your Transcription Results</h3>
+                        <button class="btn btn-outline" id="resetBtn">
+                            <i class="fas fa-redo"></i> Convert Another File
+                        </button>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="transcript-container">
+                            <h4>Transcript</h4>
+                            <div class="transcript" id="transcriptText">
+                                <!-- Transcript will appear here -->
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn" id="copyBtn">
+                                    <i class="fas fa-copy"></i> Copy Text
+                                </button>
+                                <button class="btn btn-outline" id="downloadTxtBtn">
+                                    <i class="fas fa-download"></i> Download TXT
+                                </button>
+                                <button class="btn btn-outline" id="downloadDocBtn">
+                                    <i class="fas fa-file-word"></i> Download DOCX
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Ad Banner -->
+            <div class="ad-banner">
+                <!-- Replace with your Google AdSense ad unit -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+                <!-- Audio2Text_BottomBanner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section class="info-section">
+                <h2>How to Convert Audio to Text</h2>
+                <p>Our free online audio to text converter makes it easy to transcribe your recordings. Follow these simple steps:</p>
+                
+                <ol>
+                    <li><strong>Upload your audio file</strong> by dragging and dropping or clicking the upload area</li>
+                    <li><strong>Adjust settings</strong> like language and accuracy level</li>
+                    <li><strong>Click "Convert to Text"</strong> and wait a few moments</li>
+                    <li><strong>Copy or download</strong> your text transcript in your preferred format</li>
+                </ol>
+                
+                <h3>Why Use Our Audio to Text Converter?</h3>
+                <ul>
+                    <li><strong>100% automatic</strong> - No manual typing needed</li>
+                    <li><strong>High accuracy</strong> - AI-powered speech recognition</li>
+                    <li><strong>Fast processing</strong> - Get results in minutes</li>
+                    <li><strong>Multiple formats</strong> - Download as TXT, DOCX, PDF, or SRT</li>
+                    <li><strong>No registration</strong> - Free to use with no signup</li>
+                    <li><strong>Privacy focused</strong> - We don't store your audio files</li>
+                </ul>
+                
+                <h3>Common Use Cases</h3>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <h4><i class="fas fa-user-tie"></i> Business Meetings</h4>
+                        <p>Convert meeting recordings to searchable text documents for easy reference.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4><i class="fas fa-graduation-cap"></i> Lectures & Interviews</h4>
+                        <p>Transcribe educational content or journalistic interviews quickly.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4><i class="fas fa-podcast"></i> Podcasts & Videos</h4>
+                        <p>Create transcripts for accessibility or to repurpose content.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Audio2Text</h3>
+                    <p>The easiest way to convert audio files to text transcripts online. Free, fast, and no registration required.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/examples">Examples</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/help">Help Center</a></li>
+                        <li><a href="/feedback">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Audio2Text Converter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Accuracy level display
+        const accuracyLevel = document.getElementById('accuracyLevel');
+        const accuracyValue = document.getElementById('accuracyValue');
+        
+        accuracyLevel.addEventListener('input', function() {
+            const levels = ['Low', 'Medium', 'High'];
+            accuracyValue.textContent = levels[this.value - 1];
+        });
+        
+        // File upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const processBtn = document.getElementById('processBtn');
+        const resultSection = document.getElementById('resultSection');
+        const transcriptText = document.getElementById('transcriptText');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const processingStatus = document.getElementById('processingStatus');
+        const resetBtn = document.getElementById('resetBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const downloadTxtBtn = document.getElementById('downloadTxtBtn');
+        const downloadDocBtn = document.getElementById('downloadDocBtn');
+        
+        let uploadedFile = null;
+        
+        // Handle drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary-color)';
+            uploadArea.style.backgroundColor = 'rgba(94, 53, 177, 0.05)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--border-color)';
+            uploadArea.style.backgroundColor = 'transparent';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--border-color)';
+            uploadArea.style.backgroundColor = 'transparent';
+            
+            if (e.dataTransfer.files.length) {
+                handleFileUpload(e.dataTransfer.files[0]);
+            }
+        });
+        
+        // Handle click to select file
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                handleFileUpload(fileInput.files[0]);
+            }
+        });
+        
+        function handleFileUpload(file) {
+            // Check file type
+            if (!file.type.match('audio.*') && !file.name.match(/\.(mp3|wav|ogg|m4a)$/i)) {
+                alert('Please upload an audio file (MP3, WAV, OGG, or M4A)');
+                return;
+            }
+            
+            // Check file size (25MB max)
+            if (file.size > 25 * 1024 * 1024) {
+                alert('File size exceeds 25MB limit');
+                return;
+            }
+            
+            uploadedFile = file;
+            processBtn.disabled = false;
+            
+            // Show audio player
+            audioPlayer.style.display = 'block';
+            const audioURL = URL.createObjectURL(file);
+            audioPlayer.src = audioURL;
+        }
+        
+        // Process audio button
+        processBtn.addEventListener('click', function() {
+            if (!uploadedFile) return;
+            
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+            processingStatus.textContent = 'Preparing for transcription';
+            
+            // Simulate processing steps (in a real app, this would be API calls)
+            setTimeout(() => {
+                processingStatus.textContent = 'Analyzing audio quality';
+            }, 1000);
+            
+            setTimeout(() => {
+                processingStatus.textContent = 'Converting speech to text';
+            }, 3000);
+            
+            setTimeout(() => {
+                processingStatus.textContent = 'Finalizing transcript';
+            }, 6000);
+            
+            setTimeout(function() {
+                loadingIndicator.style.display = 'none';
+                
+                // For demo purposes, we'll use a sample transcript
+                // In a real implementation, you would use the transcript from your API
+                const sampleTranscript = `[00:00:00] Welcome to our audio to text converter demonstration. This tool allows you to easily convert your audio files into text transcripts.
+
+[00:00:10] You can upload recordings of meetings, interviews, lectures, or any other audio content. Our advanced speech recognition technology will automatically transcribe the audio with high accuracy.
+
+[00:00:25] The transcription process typically takes just a few minutes depending on the length of your audio file and the selected accuracy level. Once complete, you can copy the text or download it in various formats including plain text, Word documents, or even subtitle files.
+
+[00:00:45] Thank you for trying our audio to text converter tool. We hope you find it useful for your transcription needs!`;
+                
+                transcriptText.textContent = sampleTranscript;
+                
+                // Show results section
+                resultSection.style.display = 'block';
+                
+                // Scroll to results
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }, 8000);
+        });
+        
+        // Reset button
+        resetBtn.addEventListener('click', function() {
+            uploadedFile = null;
+            fileInput.value = '';
+            processBtn.disabled = true;
+            resultSection.style.display = 'none';
+            audioPlayer.style.display = 'none';
+            audioPlayer.src = '';
+            transcriptText.textContent = '';
+        });
+        
+        // Copy button
+        copyBtn.addEventListener('click', function() {
+            if (!transcriptText.textContent) return;
+            
+            navigator.clipboard.writeText(transcriptText.textContent)
+                .then(() => {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy text: ', err);
+                    alert('Failed to copy text to clipboard');
+                });
+        });
+        
+        // Download buttons
+        downloadTxtBtn.addEventListener('click', function() {
+            if (!transcriptText.textContent) return;
+            
+            const blob = new Blob([transcriptText.textContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = uploadedFile.name.replace(/\.[^/.]+$/, '') + '-transcript.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+        
+        downloadDocBtn.addEventListener('click', function() {
+            if (!transcriptText.textContent) return;
+            
+            // In a real implementation, you would generate a proper DOCX file
+            // This is just a simulation that downloads a TXT file with DOCX extension
+            const blob = new Blob([transcriptText.textContent], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = uploadedFile.name.replace(/\.[^/.]+$/, '') + '-transcript.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+        
+        // For demo purposes, we're simulating the transcription process
+        // In a real implementation, you would:
+        // 1. Send the audio to your backend API
+        // 2. Process it with a speech recognition service (like Google Speech-to-Text)
+        // 3. Return the transcript to display and download
+        
+        // SEO: Track conversions (example)
+        function trackConversion() {
+            // This would be your analytics code
+            console.log('Conversion tracked');
+        }
+    </script>
+    
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+</body>
+</html>
