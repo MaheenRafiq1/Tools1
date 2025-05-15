@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test and improve your typing speed with our free typing test tool. Practice typing with random quotes and get instant results.">
+    <meta name="keywords" content="typing test, speed typing, WPM test, typing practice, keyboard skills">
+    <meta name="author" content="Typing Test Pro">
+    <title>Speed Typing Test Tool | Improve Your Typing Speed</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/typing-test/">
+    <meta property="og:title" content="Speed Typing Test Tool | Improve Your Typing Speed">
+    <meta property="og:description" content="Test and improve your typing speed with our free typing test tool. Practice typing with random quotes and get instant results.">
+    <meta property="og:image" content="https://yourwebsite.com/images/typing-test-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/typing-test/">
+    <meta property="twitter:title" content="Speed Typing Test Tool | Improve Your Typing Speed">
+    <meta property="twitter:description" content="Test and improve your typing speed with our free typing test tool. Practice typing with random quotes and get instant results.">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/typing-test-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/typing-test/">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --error-color: #ea4335;
+            --warning-color: #fbbc05;
+            --dark-color: #202124;
+            --light-color: #f8f9fa;
+            --text-color: #3c4043;
+            --border-color: #dadce0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .ad-container {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: #70757a;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .typing-test-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .test-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        select, button {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .test-display {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 150px;
+            position: relative;
+        }
+        
+        .test-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .input-area {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1.1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .input-area:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        .timer-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .results {
+            display: none;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .results h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat {
+            background-color: white;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #70757a;
+        }
+        
+        .typing-cursor {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .typing-cursor::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 1.2em;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .correct {
+            color: var(--secondary-color);
+        }
+        
+        .incorrect {
+            color: var(--error-color);
+            text-decoration: underline;
+        }
+        
+        .current {
+            background-color: rgba(66, 133, 244, 0.1);
+            border-radius: 2px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #70757a;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .typing-test-container {
+                padding: 20px;
+            }
+            
+            .test-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .test-text {
+                font-size: 1rem;
+            }
+            
+            .input-area {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Speed Typing Test</h1>
+            <p class="subtitle">Test and improve your typing speed with our free typing test tool</p>
+        </header>
+        
+        <!-- Top Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Typing Test Top Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <main>
+            <div class="typing-test-container">
+                <div class="test-controls">
+                    <div class="control-group">
+                        <label for="test-duration">Test Duration</label>
+                        <select id="test-duration">
+                            <option value="30">30 seconds</option>
+                            <option value="60" selected>1 minute</option>
+                            <option value="120">2 minutes</option>
+                            <option value="180">3 minutes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="text-source">Text Source</label>
+                        <select id="text-source">
+                            <option value="quotes">Famous Quotes</option>
+                            <option value="tech">Technology Articles</option>
+                            <option value="literature">Literature Excerpts</option>
+                            <option value="random">Random Words</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="difficulty">Difficulty</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <button id="start-btn">Start Test</button>
+                    <button id="reset-btn" disabled>Reset</button>
+                </div>
+                
+                <div class="timer-display" id="timer">01:00</div>
+                
+                <div class="test-display">
+                    <div class="test-text" id="test-text"></div>
+                    <textarea 
+                        class="input-area" 
+                        id="typing-input" 
+                        placeholder="Click 'Start Test' and begin typing here..." 
+                        disabled
+                    ></textarea>
+                </div>
+                
+                <div class="results" id="results">
+                    <h2>Your Typing Results</h2>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-value" id="wpm">0</div>
+                            <div class="stat-label">Words Per Minute</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="accuracy">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="correct-chars">0</div>
+                            <div class="stat-label">Correct Characters</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="incorrect-chars">0</div>
+                            <div class="stat-label">Incorrect Characters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Middle Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- Typing Test Middle Rectangle -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section class="typing-tips">
+                <h2>Tips to Improve Your Typing Speed</h2>
+                <ul>
+                    <li>Practice regularly - even 10-15 minutes daily can make a difference</li>
+                    <li>Maintain proper posture with your feet flat on the floor</li>
+                    <li>Keep your wrists elevated and fingers curved</li>
+                    <li>Learn touch typing to avoid looking at the keyboard</li>
+                    <li>Start slow and focus on accuracy first, speed will follow</li>
+                    <li>Take breaks to avoid strain and fatigue</li>
+                </ul>
+            </section>
+        </main>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Typing Test Bottom Banner -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Speed Typing Test Tool. All rights reserved.</p>
+            <p>Practice makes perfect - take the test daily to see your improvement!</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // DOM elements
+            const startBtn = document.getElementById('start-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const testText = document.getElementById('test-text');
+            const typingInput = document.getElementById('typing-input');
+            const timerDisplay = document.getElementById('timer');
+            const resultsSection = document.getElementById('results');
+            const wpmDisplay = document.getElementById('wpm');
+            const accuracyDisplay = document.getElementById('accuracy');
+            const correctCharsDisplay = document.getElementById('correct-chars');
+            const incorrectCharsDisplay = document.getElementById('incorrect-chars');
+            const testDurationSelect = document.getElementById('test-duration');
+            const textSourceSelect = document.getElementById('text-source');
+            const difficultySelect = document.getElementById('difficulty');
+            
+            // Test variables
+            let timer;
+            let timeLeft;
+            let testRunning = false;
+            let startTime;
+            let endTime;
+            let correctChars = 0;
+            let incorrectChars = 0;
+            let currentText = '';
+            let currentPosition = 0;
+            
+            // Sample texts for different categories and difficulties
+            const textSamples = {
+                quotes: {
+                    easy: [
+                        "The only way to do great work is to love what you do. - Steve Jobs",
+                        "Life is what happens when you're busy making other plans. - John Lennon",
+                        "In the middle of difficulty lies opportunity. - Albert Einstein",
+                        "The journey of a thousand miles begins with one step. - Lao Tzu",
+                        "Be yourself; everyone else is already taken. - Oscar Wilde"
+                    ],
+                    medium: [
+                        "I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison",
+                        "Our greatest glory is not in never falling, but in rising every time we fall. - Confucius",
+                        "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+                        "Do not watch the clock. Do what it does. Keep going. - Sam Levenson",
+                        "You miss 100% of the shots you don't take. - Wayne Gretzky"
+                    ],
+                    hard: [
+                        "Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do. - Mark Twain",
+                        "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+                        "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma. - Steve Jobs",
+                        "The two most important days in your life are the day you are born and the day you find out why. - Mark Twain",
+                        "Life is never made unbearable by circumstances, but only by lack of meaning and purpose. - Viktor Frankl"
+                    ]
+                },
+                tech: {
+                    easy: [
+                        "Technology is best when it brings people together. Computers themselves are just tools.",
+                        "The Internet is becoming the town square for the global village of tomorrow.",
+                        "Software is a great combination between artistry and engineering.",
+                        "The computer was born to solve problems that did not exist before.",
+                        "Technology is anything that wasn't around when you were born."
+                    ],
+                    medium: [
+                        "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
+                        "Any sufficiently advanced technology is indistinguishable from magic. The future is already here — it's just not very evenly distributed.",
+                        "The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.",
+                        "The great growling engine of change—technology. The most important thing we do is learn how to harness the power of technology.",
+                        "Technology is a word that describes something that doesn't work yet. Once it works, we call it something else."
+                    ],
+                    hard: [
+                        "The real problem is not whether machines think but whether men do. The question of whether a computer can think is no more interesting than the question of whether a submarine can swim.",
+                        "We are stuck with technology when what we really want is just stuff that works. The technology you use impresses no one. The experience you create with it is everything.",
+                        "The most profound technologies are those that disappear. They weave themselves into the fabric of everyday life until they are indistinguishable from it.",
+                        "It has become appallingly obvious that our technology has exceeded our humanity. The human spirit must prevail over technology.",
+                        "The Internet is the first thing that humanity has built that humanity doesn't understand, the largest experiment in anarchy that we have ever had."
+                    ]
+                },
+                literature: {
+                    easy: [
+                        "It was the best of times, it was the worst of times.",
+                        "All happy families are alike; each unhappy family is unhappy in its own way.",
+                        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+                        "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse.",
+                        "Happy families are all alike; every unhappy family is unhappy in its own way."
+                    ],
+                    medium: [
+                        "The past is never dead. It's not even past. He danced out into the twilight where the last of the evening light was still visible.",
+                        "It was a bright cold day in April, and the clocks were striking thirteen. The hallway smelt of boiled cabbage and old rag mats.",
+                        "There was no possibility of taking a walk that day. We had been wandering, indeed, in the leafless shrubbery an hour in the morning.",
+                        "You better not never tell nobody but God. It'd kill your mammy. She had a round face, high cheekbones, and very dark skin.",
+                        "It was a pleasure to burn. It was a special pleasure to see things eaten, to see things blackened and changed."
+                    ],
+                    hard: [
+                        "Many years later, as he faced the firing squad, Colonel Aureliano Buendía was to remember that distant afternoon when his father took him to discover ice.",
+                        "Lolita, light of my life, fire of my loins. My sin, my soul. Lo-lee-ta: the tip of the tongue taking a trip of three steps down the palate to tap, at three, on the teeth.",
+                        "A screaming comes across the sky. It has happened before, but there is nothing to compare it to now. The rockets' red glare, the bombs bursting in air.",
+                        "The sun shone, having no alternative, on the nothing new. Murphy sat out of it, as though he were free, in a mew in West Brompton.",
+                        "riverrun, past Eve and Adam's, from swerve of shore to bend of bay, brings us by a commodius vicus of recirculation back to Howth Castle and Environs."
+                    ]
+                },
+                random: {
+                    easy: [
+                        "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.",
+                        "How vexingly quick daft zebras jump! Bright vixens jump; dozy fowl quack.",
+                        "Sphinx of black quartz, judge my vow. Waltz, nymph, for quick jigs vex bud.",
+                        "Crazy Fredrick bought many very exquisite opal jewels. The quick onyx goblin jumps over the lazy dwarf.",
+                        "Five quacking zephyrs jolt my wax bed. Few quips galvanized the mock jury box."
+                    ],
+                    medium: [
+                        "Amazingly few discotheques provide jukeboxes. The jay, pig, fox, zebra and my wolves quack!",
+                        "Brawny gods just flocked up to quiz and vex him. Quick zephyrs blow, vexing daft Jim.",
+                        "Two driven jocks help fax my big quiz. Fake bugs put in wax jonquils drive him crazy.",
+                        "Quick wafting zephyrs vex bold Jim. Junk MTV quiz graced by fox whelps.",
+                        "Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex!"
+                    ],
+                    hard: [
+                        "Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow.",
+                        "How quickly daft jumping zebras vex. Quick fox jumps nightly above wizard.",
+                        "Jinxed wizards pluck ivy from the big quilt. Foxy diva Jennifer Lopez wasn't baking my quiche.",
+                        "Five or six big jet planes zoomed quickly by the tower. The five boxing wizards jump quickly.",
+                        "Pack my red box with five dozen quality jugs. Crazy Frederick bought many very exquisite opal jewels."
+                    ]
+                }
+            };
+            
+            // Event listeners
+            startBtn.addEventListener('click', startTest);
+            resetBtn.addEventListener('click', resetTest);
+            typingInput.addEventListener('input', checkTyping);
+            
+            // Initialize the test
+            resetTest();
+            
+            // Functions
+            function startTest() {
+                if (testRunning) return;
+                
+                testRunning = true;
+                startBtn.disabled = true;
+                resetBtn.disabled = false;
+                typingInput.disabled = false;
+                typingInput.value = '';
+                typingInput.focus();
+                
+                // Get test settings
+                const duration = parseInt(testDurationSelect.value);
+                const source = textSourceSelect.value;
+                const difficulty = difficultySelect.value;
+                
+                // Select random text based on settings
+                const texts = textSamples[source][difficulty];
+                currentText = texts[Math.floor(Math.random() * texts.length)];
+                
+                // Display the text with formatting
+                displayText();
+                
+                // Set up timer
+                timeLeft = duration;
+                updateTimerDisplay();
+                
+                startTime = new Date().getTime();
+                timer = setInterval(updateTimer, 1000);
+                
+                // Hide results if showing
+                resultsSection.style.display = 'none';
+                
+                // Reset counters
+                correctChars = 0;
+                incorrectChars = 0;
+                currentPosition = 0;
+            }
+            
+            function resetTest() {
+                clearInterval(timer);
+                testRunning = false;
+                startBtn.disabled = false;
+                resetBtn.disabled = true;
+                typingInput.disabled = true;
+                typingInput.value = '';
+                testText.innerHTML = '';
+                
+                // Reset timer display to default
+                timeLeft = parseInt(testDurationSelect.value);
+                updateTimerDisplay();
+                
+                // Hide results
+                resultsSection.style.display = 'none';
+            }
+            
+            function updateTimer() {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    endTest();
+                }
+            }
+            
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+            
+            function displayText() {
+                let html = '';
+                
+                // Create spans for each character with appropriate classes
+                for (let i = 0; i < currentText.length; i++) {
+                    let char = currentText[i];
+                    let charClass = '';
+                    
+                    if (i < currentPosition) {
+                        charClass = 'correct';
+                    } else if (i === currentPosition) {
+                        charClass = 'current typing-cursor';
+                    }
+                    
+                    // Handle spaces (convert to &nbsp; for consistent display)
+                    if (char === ' ') {
+                        char = '&nbsp;';
+                    }
+                    
+                    html += `<span class="${charClass}">${char}</span>`;
+                }
+                
+                testText.innerHTML = html;
+            }
+            
+            function checkTyping() {
+                const inputText = typingInput.value;
+                const inputLength = inputText.length;
+                
+                // Reset current position if input is empty
+                if (inputLength === 0) {
+                    currentPosition = 0;
+                    displayText();
+                    return;
+                }
+                
+                // Check each character up to the current input length
+                for (let i = 0; i < inputLength; i++) {
+                    if (i >= currentText.length) {
+                        // User has typed beyond the test text (shouldn't happen with proper controls)
+                        break;
+                    }
+                    
+                    if (i >= currentPosition) {
+                        // New characters being typed
+                        if (inputText[i] === currentText[i]) {
+                            correctChars++;
+                        } else {
+                            incorrectChars++;
+                        }
+                        currentPosition++;
+                    } else {
+                        // Re-checking previously typed characters (in case of backspace)
+                        if (inputText[i] === currentText[i]) {
+                            // Character was wrong and is now correct
+                            if (i < currentText.length && testText.children[i].classList.contains('incorrect')) {
+                                incorrectChars--;
+                                correctChars++;
+                            }
+                        } else {
+                            // Character was correct and is now wrong
+                            if (i < currentText.length && !testText.children[i].classList.contains('incorrect')) {
+                                correctChars--;
+                                incorrectChars++;
+                            }
+                        }
+                    }
+                }
+                
+                // Handle backspace (current position exceeds input length)
+                if (inputLength < currentPosition) {
+                    const diff = currentPosition - inputLength;
+                    
+                    for (let i = inputLength; i < currentPosition; i++) {
+                        if (testText.children[i].classList.contains('correct')) {
+                            correctChars--;
+                        } else if (testText.children[i].classList.contains('incorrect')) {
+                            incorrectChars--;
+                        }
+                    }
+                    
+                    currentPosition = inputLength;
+                }
+                
+                // Update the displayed text with correct/incorrect formatting
+                displayText();
+                
+                // Check if user has completed the text
+                if (currentPosition >= currentText.length) {
+                    endTest();
+                }
+            }
+            
+            function endTest() {
+                clearInterval(timer);
+                testRunning = false;
+                startBtn.disabled = false;
+                typingInput.disabled = true;
+                endTime = new Date().getTime();
+                
+                // Calculate results
+                const timeInMinutes = (parseInt(testDurationSelect.value) - timeLeft) / 60;
+                const totalWords = currentText.split(/\s+/).length;
+                const wordsPerMinute = Math.round((correctChars / 5) / timeInMinutes);
+                const accuracy = Math.round((correctChars / (correctChars + incorrectChars)) * 100);
+                
+                // Display results
+                wpmDisplay.textContent = wordsPerMinute;
+                accuracyDisplay.textContent = accuracy + '%';
+                correctCharsDisplay.textContent = correctChars;
+                incorrectCharsDisplay.textContent = incorrectChars;
+                
+                resultsSection.style.display = 'block';
+                
+                // Scroll to results
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Track completion for analytics (example)
+                trackTestCompletion(wordsPerMinute, accuracy);
+            }
+            
+            function trackTestCompletion(wpm, accuracy) {
+                // In a real implementation, you would send this data to your analytics platform
+                console.log(`Test completed: ${wpm} WPM, ${accuracy}% accuracy`);
+                
+                // Example: Send data to Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'typing_test_complete', {
+                        'wpm': wpm,
+                        'accuracy': accuracy,
+                        'duration': testDurationSelect.value,
+                        'source': textSourceSelect.value,
+                        'difficulty': difficultySelect.value
+                    });
+                }
+            }
+            
+            // SEO enhancement: Track outbound links
+            document.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' && e.target.href.startsWith('http')) {
+                    // Track outbound link clicks
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'outbound_click', {
+                            'event_category': 'Outbound Link',
+                            'event_label': e.target.href,
+                            'transport_type': 'beacon'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Speed Typing Test Tool",
+        "url": "https://yourwebsite.com/typing-test/",
+        "description": "Test and improve your typing speed with our free typing test tool. Practice typing with random quotes and get instant results.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Typing Test Pro"
+        }
+    }
+    </script>
+    
+    <!-- Google Analytics (example) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</body>
+</html>
