@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Fake Email Generator tool. Create temporary email addresses instantly for testing and privacy protection.">
+    <meta name="keywords" content="fake email, temporary email, email generator, disposable email, privacy tool">
+    <meta name="author" content="Fake Email Generator">
+    <meta name="robots" content="index, follow">
+    <title>Fake Email Generator | Create Temporary Email Addresses Instantly</title>
+    <link rel="canonical" href="https://yourwebsite.com/fake-email-generator" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/fake-email-generator">
+    <meta property="og:title" content="Fake Email Generator | Create Temporary Email Addresses Instantly">
+    <meta property="og:description" content="Free online Fake Email Generator tool. Create temporary email addresses instantly for testing and privacy protection.">
+    <meta property="og:image" content="https://yourwebsite.com/images/fake-email-generator-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/fake-email-generator">
+    <meta property="twitter:title" content="Fake Email Generator | Create Temporary Email Addresses Instantly">
+    <meta property="twitter:description" content="Free online Fake Email Generator tool. Create temporary email addresses instantly for testing and privacy protection.">
+    <meta property="twitter:image" content="https://yourwebsite.com/images/fake-email-generator-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        select, input, button {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+        }
+        
+        .result-container {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .result-box {
+            background-color: #f1f3f4;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .result-box p {
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .copy-btn:hover {
+            background-color: #2d9248;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        .ad-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px dashed #ddd;
+        }
+        
+        .ad-label {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc1c6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #3c4043;
+            color: #bdc1c6;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">Fake Email Generator</a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <!-- Ad Space - Top Banner -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- FakeEmailGen_Top_Banner -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section class="hero">
+                <h1>Generate Fake Email Addresses Instantly</h1>
+                <p>Create temporary, disposable email addresses for testing, registration, and privacy protection. No registration required!</p>
+            </section>
+            
+            <section class="tool-container">
+                <h2 class="tool-title"><i>✉️</i> Fake Email Generator</h2>
+                
+                <div class="form-group">
+                    <label for="domain">Select Email Domain:</label>
+                    <select id="domain">
+                        <option value="tempmail.com">tempmail.com</option>
+                        <option value="fakemail.net">fakemail.net</option>
+                        <option value="disposable.com">disposable.com</option>
+                        <option value="mailinator.com">mailinator.com</option>
+                        <option value="guerrillamail.com">guerrillamail.com</option>
+                        <option value="custom">Custom Domain</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="custom-domain-group" style="display: none;">
+                    <label for="custom-domain">Enter Custom Domain:</label>
+                    <input type="text" id="custom-domain" placeholder="example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="username-type">Username Type:</label>
+                    <select id="username-type">
+                        <option value="random">Random Characters</option>
+                        <option value="name-based">Name-Based</option>
+                        <option value="custom">Custom Username</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="name-input-group" style="display: none;">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" placeholder="John">
+                    <label for="last-name" style="margin-top: 10px;">Last Name:</label>
+                    <input type="text" id="last-name" placeholder="Doe">
+                </div>
+                
+                <div class="form-group" id="custom-username-group" style="display: none;">
+                    <label for="custom-username">Custom Username:</label>
+                    <input type="text" id="custom-username" placeholder="yourusername">
+                </div>
+                
+                <button id="generate-btn">Generate Fake Email</button>
+                
+                <div class="result-container" id="result-container">
+                    <h3>Your Fake Email Address:</h3>
+                    <div class="result-box">
+                        <p id="generated-email"></p>
+                        <button class="copy-btn" id="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Ad Space - Middle Rectangle -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- FakeEmailGen_Middle_Rectangle -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section id="how-it-works" class="tool-container">
+                <h2 class="tool-title"><i>❓</i> How It Works</h2>
+                <ol style="padding-left: 20px; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;">Select your preferred email domain or enter a custom one</li>
+                    <li style="margin-bottom: 10px;">Choose how you want your username generated</li>
+                    <li style="margin-bottom: 10px;">Click "Generate Fake Email" button</li>
+                    <li>Copy your new temporary email address and use it wherever you need</li>
+                </ol>
+                <p>These email addresses are disposable and perfect for testing, signing up for services you don't trust, or protecting your privacy.</p>
+            </section>
+            
+            <section id="features" class="features">
+                <div class="feature-card">
+                    <h3>Instant Generation</h3>
+                    <p>Create fake email addresses in seconds with just one click. No waiting, no registration required.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multiple Domains</h3>
+                    <p>Choose from our selection of trusted temporary email domains or use your own custom domain.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Privacy Protection</h3>
+                    <p>Keep your personal email safe from spam and protect your online identity with disposable addresses.</p>
+                </div>
+            </section>
+            
+            <!-- Ad Space - Bottom Banner -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- FakeEmailGen_Bottom_Banner -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <section id="faq" class="tool-container">
+                <h2 class="tool-title"><i>❓</i> Frequently Asked Questions</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 10px;">Are these email addresses real?</h3>
+                    <p>These are functional email addresses that can receive emails, but they're temporary and disposable. Most will expire after a certain period or when you close your browser.</p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 10px;">Can I send emails from these addresses?</h3>
+                    <p>No, these are receive-only email addresses designed for testing and privacy protection.</p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 10px;">How long do these emails last?</h3>
+                    <p>It depends on the domain you choose. Some last for 24 hours, others for several days. Check the specific domain's policies for exact expiration times.</p>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 10px;">Is this service free?</h3>
+                    <p>Yes, our fake email generator is completely free to use with no hidden charges.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Fake Email Generator</h3>
+                    <p>Create temporary, disposable email addresses instantly for testing and privacy protection.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Fake Email Generator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM elements
+        const domainSelect = document.getElementById('domain');
+        const customDomainGroup = document.getElementById('custom-domain-group');
+        const customDomainInput = document.getElementById('custom-domain');
+        const usernameTypeSelect = document.getElementById('username-type');
+        const nameInputGroup = document.getElementById('name-input-group');
+        const customUsernameGroup = document.getElementById('custom-username-group');
+        const customUsernameInput = document.getElementById('custom-username');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultContainer = document.getElementById('result-container');
+        const generatedEmail = document.getElementById('generated-email');
+        const copyBtn = document.getElementById('copy-btn');
+        
+        // Event listeners
+        domainSelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customDomainGroup.style.display = 'block';
+            } else {
+                customDomainGroup.style.display = 'none';
+            }
+        });
+        
+        usernameTypeSelect.addEventListener('change', function() {
+            nameInputGroup.style.display = 'none';
+            customUsernameGroup.style.display = 'none';
+            
+            if (this.value === 'name-based') {
+                nameInputGroup.style.display = 'block';
+            } else if (this.value === 'custom') {
+                customUsernameGroup.style.display = 'block';
+            }
+        });
+        
+        generateBtn.addEventListener('click', generateEmail);
+        copyBtn.addEventListener('click', copyEmail);
+        
+        // Generate random string
+        function randomString(length) {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+        
+        // Generate email
+        function generateEmail() {
+            let username = '';
+            const usernameType = usernameTypeSelect.value;
+            
+            // Generate username based on selected type
+            if (usernameType === 'random') {
+                username = randomString(10);
+            } else if (usernameType === 'name-based') {
+                const firstName = document.getElementById('first-name').value.trim().toLowerCase();
+                const lastName = document.getElementById('last-name').value.trim().toLowerCase();
+                
+                if (firstName && lastName) {
+                    username = `${firstName}.${lastName}.${randomString(4)}`;
+                } else if (firstName) {
+                    username = `${firstName}.${randomString(6)}`;
+                } else if (lastName) {
+                    username = `${lastName}.${randomString(6)}`;
+                } else {
+                    username = randomString(10);
+                }
+            } else if (usernameType === 'custom') {
+                username = customUsernameInput.value.trim().toLowerCase();
+                if (!username) {
+                    username = randomString(10);
+                }
+            }
+            
+            // Clean up username (remove spaces, special chars)
+            username = username.replace(/\s+/g, '.').replace(/[^a-z0-9.]/g, '');
+            
+            // Get domain
+            let domain = domainSelect.value;
+            if (domain === 'custom') {
+                domain = customDomainInput.value.trim();
+                if (!domain) {
+                    domain = 'tempmail.com';
+                }
+            }
+            
+            // Remove @ if included in custom domain
+            domain = domain.replace('@', '');
+            
+            // Generate email
+            const email = `${username}@${domain}`;
+            
+            // Display result
+            generatedEmail.textContent = email;
+            resultContainer.style.display = 'block';
+            
+            // Scroll to result
+            resultContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Copy email to clipboard
+        function copyEmail() {
+            const email = generatedEmail.textContent;
+            navigator.clipboard.writeText(email).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Hide mobile menu on larger screens
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+        
+        // Initialize - hide mobile menu on load if small screen
+        if (window.innerWidth <= 768) {
+            nav.style.display = 'none';
+            mobileMenuBtn.style.display = 'block';
+        }
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fake Email Generator",
+        "url": "https://yourwebsite.com/fake-email-generator",
+        "description": "Free online tool to generate temporary, disposable email addresses for testing and privacy protection.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Fake Email Generator"
+        }
+    }
+    </script>
+</body>
+</html>
