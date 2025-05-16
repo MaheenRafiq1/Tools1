@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online paragraph rewriter tool that helps you rewrite, paraphrase, and compress text with different levels of optimization. Perfect for content creators, students, and SEO professionals.">
+    <meta name="keywords" content="paragraph rewriter, text rewriter, paraphrase tool, content optimization, SEO tool, article rewriter">
+    <meta name="author" content="Paragraph Rewriter Tool">
+    <meta name="robots" content="index, follow">
+    <title>Advanced Paragraph Rewriter Tool | Free Online Text Optimization</title>
+    <link rel="canonical" href="https://www.yourdomain.com/paragraph-rewriter" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Advanced Paragraph Rewriter Tool">
+    <meta property="og:description" content="Free online tool to rewrite and optimize your paragraphs with different compression levels.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/paragraph-rewriter">
+    <meta property="og:image" content="https://www.yourdomain.com/images/paragraph-rewriter-tool.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 30px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .hero p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .ad-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .ad-label {
+            font-size: 12px;
+            color: var(--gray-color);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 200px;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            font-family: inherit;
+            font-size: 16px;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        select:focus, button:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+        }
+        
+        button.secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        button.secondary:hover {
+            background-color: #e8eaed;
+        }
+        
+        .result-container {
+            margin-top: 30px;
+        }
+        
+        .word-count {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card p {
+            color: var(--gray-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-container {
+                padding: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">Paragraph<span>Rewriter</span></a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 1 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="hero">
+            <h1>Advanced Paragraph Rewriter Tool</h1>
+            <p>Transform your text with our powerful rewriting tool. Choose the compression level to optimize your content for readability, SEO, or brevity.</p>
+        </section>
+        
+        <section class="tool-container">
+            <h2 class="tool-title"><i>✍️</i> Rewrite Your Paragraph</h2>
+            
+            <div class="input-group">
+                <label for="original-text">Original Text</label>
+                <textarea id="original-text" placeholder="Paste the text you want to rewrite here..."></textarea>
+                <div class="word-count">
+                    <span id="original-word-count">0 words</span>
+                    <span id="original-char-count">0 characters</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="compression-level">Compression Level</label>
+                    <select id="compression-level">
+                        <option value="light">Light Rewriting (Preserves most original meaning)</option>
+                        <option value="medium" selected>Medium Rewriting (Balanced approach)</option>
+                        <option value="heavy">Heavy Rewriting (Maximum paraphrasing)</option>
+                        <option value="simplify">Simplify (Reduce complexity)</option>
+                        <option value="expand">Expand (Add more detail)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="tone">Tone</label>
+                    <select id="tone">
+                        <option value="neutral" selected>Neutral</option>
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="rewrite-btn" class="primary">Rewrite Paragraph</button>
+                <button id="clear-btn" class="secondary">Clear All</button>
+                <button id="copy-btn" class="secondary" disabled>Copy Result</button>
+            </div>
+            
+            <div class="result-container">
+                <label for="rewritten-text">Rewritten Text</label>
+                <textarea id="rewritten-text" placeholder="Your rewritten text will appear here..." readonly></textarea>
+                <div class="word-count">
+                    <span id="rewritten-word-count">0 words</span>
+                    <span id="rewritten-char-count">0 characters</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Middle Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 2 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID_2"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section id="how-it-works" class="tool-container">
+            <h2 class="tool-title"><i>❓</i> How It Works</h2>
+            <p>Our Paragraph Rewriter tool uses advanced algorithms to analyze your text and rewrite it while preserving the original meaning. Here's how to use it:</p>
+            <ol style="margin-top: 15px; padding-left: 20px;">
+                <li style="margin-bottom: 10px;">Paste your text into the "Original Text" box</li>
+                <li style="margin-bottom: 10px;">Select your desired compression level and tone</li>
+                <li style="margin-bottom: 10px;">Click "Rewrite Paragraph" to generate a new version</li>
+                <li style="margin-bottom: 10px;">Review the rewritten text and copy it to your clipboard</li>
+            </ol>
+        </section>
+        
+        <section id="features" class="tool-container">
+            <h2 class="tool-title"><i>✨</i> Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Multiple Compression Levels</h3>
+                    <p>Choose from light to heavy rewriting depending on how much you want to change the original text.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Tone Adjustment</h3>
+                    <p>Modify the tone of your rewritten content to match your desired style and audience.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Word Count Tracking</h3>
+                    <p>Monitor changes in word and character counts to ensure your text meets requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your content's search engine visibility with our rewriting algorithms.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>100% Free</h3>
+                    <p>No subscriptions or hidden fees - our paragraph rewriter is completely free to use.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices, from desktop computers to smartphones.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Ad Unit 3 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID_3"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/about">About</a>
+            </div>
+            <p class="copyright">© <span id="current-year"></span> Paragraph Rewriter Tool. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Word count functionality
+        const originalTextarea = document.getElementById('original-text');
+        const rewrittenTextarea = document.getElementById('rewritten-text');
+        const originalWordCount = document.getElementById('original-word-count');
+        const originalCharCount = document.getElementById('original-char-count');
+        const rewrittenWordCount = document.getElementById('rewritten-word-count');
+        const rewrittenCharCount = document.getElementById('rewritten-char-count');
+        const copyBtn = document.getElementById('copy-btn');
+        
+        originalTextarea.addEventListener('input', updateOriginalCounts);
+        rewrittenTextarea.addEventListener('input', updateRewrittenCounts);
+        
+        function updateOriginalCounts() {
+            const text = originalTextarea.value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const chars = text.length;
+            
+            originalWordCount.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+            originalCharCount.textContent = `${chars} character${chars !== 1 ? 's' : ''}`;
+        }
+        
+        function updateRewrittenCounts() {
+            const text = rewrittenTextarea.value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const chars = text.length;
+            
+            rewrittenWordCount.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+            rewrittenCharCount.textContent = `${chars} character${chars !== 1 ? 's' : ''}`;
+            
+            // Enable/disable copy button based on whether there's text
+            copyBtn.disabled = words === 0;
+        }
+        
+        // Clear button functionality
+        document.getElementById('clear-btn').addEventListener('click', function() {
+            originalTextarea.value = '';
+            rewrittenTextarea.value = '';
+            updateOriginalCounts();
+            updateRewrittenCounts();
+            copyBtn.disabled = true;
+        });
+        
+        // Copy button functionality
+        copyBtn.addEventListener('click', function() {
+            rewrittenTextarea.select();
+            document.execCommand('copy');
+            
+            // Show temporary feedback
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 2000);
+        });
+        
+        // Rewrite button functionality (simulated - in a real app, this would call an API)
+        document.getElementById('rewrite-btn').addEventListener('click', function() {
+            const originalText = originalTextarea.value.trim();
+            const compressionLevel = document.getElementById('compression-level').value;
+            const tone = document.getElementById('tone').value;
+            
+            if (!originalText) {
+                alert('Please enter some text to rewrite.');
+                return;
+            }
+            
+            // Show loading state
+            const rewriteBtn = this;
+            const originalBtnText = rewriteBtn.textContent;
+            rewriteBtn.textContent = 'Rewriting...';
+            rewriteBtn.disabled = true;
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // This is a simulation - in a real app, you would call your backend API here
+                const rewrittenText = simulateRewrite(originalText, compressionLevel, tone);
+                rewrittenTextarea.value = rewrittenText;
+                updateRewrittenCounts();
+                
+                // Restore button
+                rewriteBtn.textContent = originalBtnText;
+                rewriteBtn.disabled = false;
+            }, 1500);
+        });
+        
+        // Simulated rewrite function (in a real app, this would be handled by your backend)
+        function simulateRewrite(text, compressionLevel, tone) {
+            // These are just example transformations - a real implementation would be more sophisticated
+            let result = text;
+            
+            // Apply compression level transformations
+            switch(compressionLevel) {
+                case 'light':
+                    // Minimal changes
+                    result = result.replace(/very/g, 'quite')
+                                  .replace(/many/g, 'numerous')
+                                  .replace(/important/g, 'significant');
+                    break;
+                case 'medium':
+                    // Moderate changes
+                    result = result.replace(/the/g, 'this')
+                                  .replace(/and/g, 'as well as')
+                                  .replace(/but/g, 'however')
+                                  .replace(/important/g, 'crucial');
+                    break;
+                case 'heavy':
+                    // Significant changes
+                    result = result.split('.').map(sentence => {
+                        if (sentence.trim().length > 0) {
+                            return "The essential point is that" + sentence.toLowerCase();
+                        }
+                        return sentence;
+                    }).join('.');
+                    break;
+                case 'simplify':
+                    // Simplify language
+                    result = result.replace(/utilize/g, 'use')
+                                  .replace(/approximately/g, 'about')
+                                  .replace(/individual/g, 'person')
+                                  .replace(/commence/g, 'start');
+                    break;
+                case 'expand':
+                    // Add more detail
+                    result = result.replace(/important/g, 'extremely important and valuable')
+                                  .replace(/good/g, 'exceptionally good and well-crafted')
+                                  .replace(/many/g, 'a considerable number of');
+                    break;
+            }
+            
+            // Apply tone transformations
+            switch(tone) {
+                case 'formal':
+                    result = result.replace(/don't/g, 'do not')
+                                  .replace(/can't/g, 'cannot')
+                                  .replace(/it's/g, 'it is')
+                                  .replace(/you're/g, 'you are');
+                    break;
+                case 'casual':
+                    result = result.replace(/cannot/g, "can't")
+                                  .replace(/do not/g, "don't")
+                                  .replace(/it is/g, "it's")
+                                  .replace(/you are/g, "you're");
+                    break;
+                case 'friendly':
+                    result = "Hey there! " + result.replace(/\./g, '!').toLowerCase();
+                    break;
+                case 'professional':
+                    result = "After careful consideration, " + result.toLowerCase();
+                    break;
+            }
+            
+            return result;
+        }
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Paragraph Rewriter Tool",
+        "url": "https://www.yourdomain.com/paragraph-rewriter",
+        "description": "Free online paragraph rewriter tool that helps you rewrite, paraphrase, and compress text with different levels of optimization.",
+        "applicationCategory": "WritingApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Paragraph Rewriter Tool"
+        }
+    }
+    </script>
+</body>
+</html>
